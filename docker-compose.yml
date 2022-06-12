@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+  api:
+    container_name: test_task-api
+    image: test_task-api
+    command: npm start
+    restart: always
+    build: .
+    ports:
+      - "3001:3000"
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: test_task-mongo
+    image: mongo
+    ports:
+      - 27022:27017
