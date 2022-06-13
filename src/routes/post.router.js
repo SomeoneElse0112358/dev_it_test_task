@@ -1,15 +1,20 @@
 const express = require("express");
-const router = express();
 const { post: PostController } = require("../controllers");
+const { post: PostValidation } = require("../validation/index");
+const router = express();
 const postController = new PostController();
+const postValidation = new PostValidation();
 
-router.route("/").get(postController.getList).post(postController.create);
+router
+  .route("/")
+  .get(postController.getList)
+  .post(postValidation.create, postController.create);
 
 router
   .route("/:id")
-  .get(postController.getOne)
-  .patch(postController.update)
-  .delete(postController.delete);
+  .get(postValidation.id, postController.getOne)
+  .patch(postValidation.id, postValidation.update, postController.update)
+  .delete(postValidation.id, postController.delete);
 
 module.exports = router;
 
