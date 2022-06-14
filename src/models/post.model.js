@@ -7,6 +7,7 @@ const postSchema = Schema(
     title: { type: String },
     link: { type: String },
     pubDate: { type: String },
+    "dc:creator": { type: String },
     content: { type: String },
     contentSnippet: { type: String },
     guid: { type: String },

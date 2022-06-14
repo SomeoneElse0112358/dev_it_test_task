@@ -25,4 +25,17 @@ const updateSchema = Joi.object({
 
 const idSchema = Joi.object({ id: Joi.objectId() });
 
-module.exports = { createSchema, updateSchema, idSchema };
+const rssSchema = Joi.object({
+  creator: Joi.string(),
+  title: Joi.string(),
+  link: Joi.string(),
+  pubDate: Joi.string(),
+  "dc:creator": Joi.string(),
+  content: Joi.string(),
+  contentSnippet: Joi.string(),
+  guid: Joi.string(),
+  categories: Joi.array().items(Joi.string()),
+  isoDate: Joi.string(),
+});
+
+module.exports = { createSchema, updateSchema, idSchema, rssSchema };
